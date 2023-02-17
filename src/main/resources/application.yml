@@ -1,0 +1,26 @@
+micronaut:
+  application:
+    name: todoApi
+  security:
+    endpoints:
+      login:
+        enabled: true
+        path: '/users/login'
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
+        bearer:
+          enabled: true
+
+netty:
+  default:
+    allocator:
+      max-order: 3
+
+mongodb:
+  uri: mongodb://localhost:27017/todo
+  uuid-representation: java_legacy
